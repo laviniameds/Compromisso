@@ -39,9 +39,25 @@ namespace Cliente
             dataGrid.ItemsSource = obj;
         }
 
-        private void realizar_Click(object sender, RoutedEventArgs e)
+        private async void realizar_Click(object sender, RoutedEventArgs e)
         {
-            object Id = ((Button)sender).CommandParameter;
+            Models.Compromisso myObject = new Models.Compromisso();
+            object c = ((Button)sender).CommandParameter;
+            if (c is Models.Compromisso){myObject = (Models.Compromisso)c;}
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri(ip);
+            Models.Compromisso f = new Models.Compromisso
+            {
+                id = Convert.ToInt32(myObject.id),
+                descricao = myObject.descricao,
+                local = myObject.local,
+                data = myObject.data,
+                realizado = true
+            };
+            string s = "=" + JsonConvert.SerializeObject(f);
+            var content = new StringContent(s, Encoding.UTF8, "application/x-www-form-urlencoded");
+            await httpClient.PutAsync("/api/Compro/" + f.id, content);
+            Select();
         }
     }
 }

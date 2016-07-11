@@ -5,11 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cliente"
         mc:Ignorable="d"
-        Title="RealizarCompromisso" Height="278.4" Width="339.2">
+        Title="RealizarCompromisso" Height="280.627" Width="455.757">
     <Grid>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,34,-31.4,0" VerticalAlignment="Top" Height="199" Width="315" AutoGenerateColumns="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="31*"/>
+            <ColumnDefinition Width="6*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Height="199" Width="430" AutoGenerateColumns="False" Grid.ColumnSpan="2">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Id}" Header="id"/>
+                <DataGridTextColumn Binding="{Binding id}" Header="id"/>
                 <DataGridTextColumn Binding="{Binding descricao}" Header="descricao"/>
                 <DataGridTextColumn Binding="{Binding local}" Header="local"/>
                 <DataGridTextColumn Binding="{Binding data}" Header="data"/>
@@ -17,7 +21,7 @@
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button  Click="realizar_Click" CommandParameter="{Binding id}" Content="Realizar"/>
+                            <Button  Click="realizar_Click" CommandParameter="{Binding}" Content="Realizar"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
