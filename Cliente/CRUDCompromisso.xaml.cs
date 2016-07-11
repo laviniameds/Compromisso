@@ -57,6 +57,7 @@ namespace Cliente
             string s = "=" + JsonConvert.SerializeObject(fl);
             var content = new StringContent(s, Encoding.UTF8, "application/x-www-form-urlencoded");
             await httpClient.PostAsync("/api/Compro/", content);
+            MessageBox.Show("Inserido com sucesso!");
             Select();
         }
 
@@ -75,6 +76,7 @@ namespace Cliente
             string s = "=" + JsonConvert.SerializeObject(f);
             var content = new StringContent(s, Encoding.UTF8, "application/x-www-form-urlencoded");
             await httpClient.PutAsync("/api/Compro/" + f.id, content);
+            MessageBox.Show("Atualizado com sucesso!");
             Select();
         }
 
@@ -83,6 +85,7 @@ namespace Cliente
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(ip);
             await httpClient.DeleteAsync("/api/Compro/" + txtId.Text);
+            MessageBox.Show("Deletado com sucesso!");
             Select();
         }
     }

@@ -41,8 +41,8 @@ namespace Cliente
 
         private async void realizar_Click(object sender, RoutedEventArgs e)
         {
-            Models.Compromisso myObject = new Models.Compromisso();
             object c = ((Button)sender).CommandParameter;
+            Models.Compromisso myObject = new Models.Compromisso();
             if (c is Models.Compromisso){myObject = (Models.Compromisso)c;}
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(ip);
@@ -57,6 +57,7 @@ namespace Cliente
             string s = "=" + JsonConvert.SerializeObject(f);
             var content = new StringContent(s, Encoding.UTF8, "application/x-www-form-urlencoded");
             await httpClient.PutAsync("/api/Compro/" + f.id, content);
+            MessageBox.Show("Realizado com sucesso!");
             Select();
         }
     }
