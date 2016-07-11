@@ -34,7 +34,7 @@ namespace Cliente
         {
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(ip);
-            var response = await httpClient.GetAsync("/api/Compro");
+            var response = await httpClient.GetAsync("/api/Compro/");
             var str = response.Content.ReadAsStringAsync().Result;
             List<Models.Compromisso> obj = JsonConvert.DeserializeObject<List<Models.Compromisso>>(str);
             dataGrid.ItemsSource = obj;
@@ -56,7 +56,7 @@ namespace Cliente
             fl.Add(f);
             string s = "=" + JsonConvert.SerializeObject(fl);
             var content = new StringContent(s, Encoding.UTF8, "application/x-www-form-urlencoded");
-            await httpClient.PostAsync("/api/Compro", content);
+            await httpClient.PostAsync("/api/Compro/", content);
             Select();
         }
 
@@ -74,7 +74,7 @@ namespace Cliente
             };
             string s = "=" + JsonConvert.SerializeObject(f);
             var content = new StringContent(s, Encoding.UTF8, "application/x-www-form-urlencoded");
-            await httpClient.PutAsync("/api/Compro" + f.id, content);
+            await httpClient.PutAsync("/api/Compro/" + f.id, content);
             Select();
         }
 

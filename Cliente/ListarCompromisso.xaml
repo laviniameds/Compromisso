@@ -9,13 +9,12 @@
     <Grid>
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,10,-31.4,0" VerticalAlignment="Top" Height="199" Width="315" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Id}" Header="Id"/>
+                <DataGridTextColumn Binding="{Binding id}" Header="Id"/>
                 <DataGridTextColumn Binding="{Binding descricao}" Header="Descricao"/>
                 <DataGridTextColumn Binding="{Binding local}" Header="Local"/>
                 <DataGridTextColumn Binding="{Binding data}" Header="Data"/>
                 <DataGridTextColumn Binding="{Binding realizado}" Header="Realizado"/>
             </DataGrid.Columns>
         </DataGrid>
-
     </Grid>
 </Window>

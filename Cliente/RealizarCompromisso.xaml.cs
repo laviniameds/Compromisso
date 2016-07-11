@@ -33,7 +33,7 @@ namespace Cliente
         {
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(ip);
-            var response = await httpClient.GetAsync("/api/Compro");
+            var response = await httpClient.GetAsync("/api/Compro/");
             var str = response.Content.ReadAsStringAsync().Result;
             List<Models.Compromisso> obj = JsonConvert.DeserializeObject<List<Models.Compromisso>>(str);
             dataGrid.ItemsSource = obj;
